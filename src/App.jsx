@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router';
 import 'flowbite'; 
 import './App.css';
 
-import NavBar from './components/NavBar/NavBar';
+import NavBarT from './components/NavBar/NavBarTailwind';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
@@ -17,12 +17,14 @@ const App = () => {
   
   return (
     <>
-      <NavBar/>
-      <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Landing />} />
-        <Route path='/sign-up' element={<SignUpForm />} />
-        <Route path='/sign-in' element={<SignInForm />} />
-      </Routes>
+      <NavBarT/>
+      <div className="pt-20">
+        <Routes>
+          <Route path='/' element={user ? <Dashboard /> : <Landing />} />
+          <Route path='/sign-up' element={<SignUpForm />} />
+          <Route path='/sign-in' element={<SignInForm />} />
+        </Routes>
+      </div>
     </>
   );
 };

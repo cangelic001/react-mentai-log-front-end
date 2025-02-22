@@ -53,9 +53,9 @@ const Chart = () => {
         },
         labels: {
             style: {
-                colors: '#ff8fa0', // Change this to your desired color
-                fontSize: '12px',  // Adjust font size if needed
-                fontWeight: 400     // Adjust font weight if needed
+                colors: '#ff8fa0', 
+                fontSize: '12px', 
+                fontWeight: 400     
             },
         },
     },
@@ -70,9 +70,9 @@ const Chart = () => {
         },
         labels: {
             style: {
-                colors: '#ff8fa0', // Change this to your desired color
-                fontSize: '12px',  // Adjust font size if needed
-                fontWeight: 400     // Adjust font weight if needed
+                colors: '#ff8fa0', 
+                fontSize: '12px',  
+                fontWeight: 400     
             },
         },
     },
@@ -81,7 +81,7 @@ const Chart = () => {
   const series = [
     {
       name: 'Mood',
-      data: [-1,5,0,1,2,5,4,5,3,1,4,2],
+      data: [1,2,5,4,5,3,1,4,2],
     },
   ];
 
