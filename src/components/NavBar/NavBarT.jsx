@@ -26,7 +26,7 @@ const NavBarT = () => {
             <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             
             {/* User profile button */}
-            <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+            <button type="button" className="shadow-lg text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                 <span className="sr-only">Open user menu</span>
                 <img className="w-8 h-8 rounded-full" src={userpng} alt="user photo" />
             </button> 

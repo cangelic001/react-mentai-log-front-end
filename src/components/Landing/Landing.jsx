@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const Landing = () => {
   return (
@@ -9,11 +10,13 @@ const Landing = () => {
         <h2 className="mb-4">Hello, you are on the landing page for visitors.</h2>
         <h2 className="mb-4">Sign up now, or sign in to see your super secret dashboard!</h2>
         <div>
-          <button 
+          <Link
+            to="/sign-up" 
             type="button" 
-            className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            style={{color: 'white'}}
+            className="shadow-lg text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
             Start Logging Now
-          </button>
+          </Link>
         </div>
       </main>
     </div>
