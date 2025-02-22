@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router';
 import 'flowbite'; 
 import './App.css';
 
-import NavBarT from './components/NavBar/NavBarTailwind';
+import NavBarT from './components/NavBar/NavBarT';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
