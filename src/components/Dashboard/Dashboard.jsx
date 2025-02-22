@@ -4,6 +4,8 @@ import { UserContext } from '../../contexts/UserContext';
 
 import * as userService from '../../services/userService';
 
+import Chart from '../Chart/Chart.jsx'; 
+
 const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [ users, setUsers ] = useState([]);
@@ -23,6 +25,7 @@ const Dashboard = () => {
   return (
     <main>
       <h1>Welcome, {user.username}</h1>
+      <Chart />
       <p>
         This is the dashboard page where you can see a list of all the users.
       </p>
