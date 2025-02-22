@@ -37,16 +37,19 @@ const Chart = () => {
                     color: '#ff8fa0', 
                     opacity: 1
                 }
-            ]
+            ],
         }
     },
     xaxis: {
         type: 'datetime',
+        axisBorder: {
+            show: false   // Hides the x-axis border line
+          },
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
         title: {
-            text: "Month",
+            text: "Date",
             style: {
-                fontSize: '14px',
+                fontSize: '25px',
                 fontWeight: 'bold',
                 color: '#ffba3b',
             }
@@ -63,7 +66,7 @@ const Chart = () => {
         title: {
             text: "Mood",
             style: {
-                fontSize: '14px',
+                fontSize: '25px',
                 fontWeight: 'bold',
                 color: '#ffba3b',
             }
@@ -71,7 +74,7 @@ const Chart = () => {
         labels: {
             style: {
                 colors: '#ff8fa0', 
-                fontSize: '12px',  
+                fontSize: '25px',  
                 fontWeight: 400     
             },
         },
