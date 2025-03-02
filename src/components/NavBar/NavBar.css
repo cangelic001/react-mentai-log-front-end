@@ -2,3 +2,15 @@
     background-color: #fae3a5;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   }
+
+.nav-link {
+    padding: 8px 16px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease !important; 
+}
+
+.nav-link:hover {
+    background-color: #fae3a5 !important; 
+    color: #ffa50a !important;
+    border-radius: 8px;
+}
