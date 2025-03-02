@@ -13,7 +13,17 @@ import LogForm from "./components/LogForm/LogForm";
 import { UserContext } from "./contexts/UserContext";
 import * as logService from "./services/logService";
 
+// CSS related
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+
+// Logo on tab
+import sushiLogo from './assets/sushi.svg';
+const link = document.querySelector("link[rel='icon']") || document.createElement('link');
+link.rel = 'icon';
+link.type = 'image/svg+xml';
+link.href = sushiLogo;  
+document.head.appendChild(link);
 
 const App = () => {
   const { user } = useContext(UserContext);
