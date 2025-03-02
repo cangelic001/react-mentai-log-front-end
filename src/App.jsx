@@ -13,6 +13,8 @@ import LogForm from "./components/LogForm/LogForm";
 import { UserContext } from "./contexts/UserContext";
 import * as logService from "./services/logService";
 
+import "./App.css";
+
 const App = () => {
   const { user } = useContext(UserContext);
   const [logs, setLogs] = useState([]);
