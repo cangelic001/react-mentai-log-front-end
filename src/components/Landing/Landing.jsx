@@ -21,7 +21,7 @@ const Landing = () => {
           <h6 className="mt-3 w-50" style={{ color: "#fcdb7f" }}>Your thoughts deserve a home — start journaling today to capture your dreams, untangle your emotions, and discover the power of your own voice.</h6>
           
           <div className="mt-5 mb-5 " style={{ display: 'flex', flexDirection: 'column', gap: '5px', justifyContent: 'center', alignItems: 'center'}}>
-            <Button variant="warning" className="mt-3 w-90">
+            <Button variant="warning" className="mt-3 w-90 text-white">
                 <Link to="/sign-up" style={{ textDecoration: 'none', color: 'inherit' }}>
                     New here? Start Logging Now
                 </Link>
