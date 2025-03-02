@@ -32,11 +32,15 @@ const NavBar = () => {
               <img
                 alt=""
                 src={sushiLogo}
-                width="30"
-                height="30"
+                width="40"
+                height="40"
                 className="d-inline-block align-top"
               />{' '}
-              Mentai-Log
+              <span className="fw-bold">
+                <span className="mentai-text">Mentai</span> 
+                <span className="nori-text">-</span>  
+                <span className="salmon-text">Log</span>
+              </span>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={() => setShow(true)} />
             <Navbar.Offcanvas
@@ -52,10 +56,14 @@ const NavBar = () => {
                   src={sushiLogo}
                   width="30"
                   height="30"
-                  className="d-inline-block align-top"
+                  className="d-inline-block align-top mr-3"
                 />
                 <Offcanvas.Title id="offcanvasNavbarLabel">
-                  Mentai-Log
+                  <span className="fw-bold">
+                    <span className="mentai-text">Mentai</span> 
+                    <span className="nori-text">-</span>  
+                    <span className="salmon-text">Log</span>
+                  </span>
                 </Offcanvas.Title>
               </Offcanvas.Header>
 
