@@ -35,9 +35,9 @@ const LogForm = (props) => {
   };
 
   return (
-    <main className="log-container">
-        <div className="log-form-wrapper">
-            <h1>{logId ? "Edit Log" : "New Log"}</h1>
+    <main className="log-form-container">
+        <div className="log-form">
+            <h1 className="mentai-text">{logId ? "Edit Log" : "New Log"}</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="title-input">Title</label>
@@ -59,7 +59,7 @@ const LogForm = (props) => {
                         id="text-input"
                         value={formData.text}
                         onChange={handleChange}
-                        className="form-control form-text"
+                        className="form-control"
                     />
                 </div>
 
