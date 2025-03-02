@@ -10,18 +10,18 @@ const Landing = () => {
       <Container>
         <CarouselLanding />
 
-        <div className="mb-3 mt-5 text-center">
-          <h1>Welcome to </h1>
+        <div className="mb-3 mt-5 text-center" style={{display: 'flex', flexDirection: 'column', gap: '5px', justifyContent: 'center', alignItems: 'center'}}>
+          <h1 className="nori-text">Welcome to </h1>
           <h1 className="fw-bold mb-5"> 
             <span className="mentai-text">Mentai</span> 
             <span className="nori-text">-</span>  
             <span className="salmon-text">Log</span>
           </h1>
           
-          <h5 className="mt-3" style={{ color: "#fcdb7f" }}>Your thoughts deserve a home — start journaling today to capture your dreams, untangle your emotions, and discover the power of your own voice.</h5>
+          <h6 className="mt-3 w-50" style={{ color: "#fcdb7f" }}>Your thoughts deserve a home — start journaling today to capture your dreams, untangle your emotions, and discover the power of your own voice.</h6>
           
           <div className="mt-5 mb-5 " style={{ display: 'flex', flexDirection: 'column', gap: '5px', justifyContent: 'center', alignItems: 'center'}}>
-            <Button variant="warning" className="mt-3 w-50">
+            <Button variant="warning" className="mt-3 w-90">
                 <Link to="/sign-up" style={{ textDecoration: 'none', color: 'inherit' }}>
                     New here? Start Logging Now
                 </Link>

@@ -4,8 +4,8 @@
   }
 
 .nav-link {
-    padding: 8px 16px;
-    border-radius: 10px;
+    padding: 8px 16px !important;
+    border-radius: 10px !important;
     transition: background-color 0.2s ease !important; 
 }
 
