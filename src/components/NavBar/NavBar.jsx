@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 import sushiLogo from '../../assets/sushi.svg';
 import './NavBar.css';
@@ -13,10 +13,15 @@ import { UserContext } from "../../contexts/UserContext";
 
 const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
+  const [ show, setShow ] = useState(false);
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
     setUser(null);
+  };
+
+  const handleLinkClick = () => {
+    setShow(false);
   };
 
   return (
@@ -33,11 +38,13 @@ const NavBar = () => {
               />{' '}
               Mentai-Log
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="offcanvasNavbar" />
+            <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={() => setShow(true)} />
             <Navbar.Offcanvas
               id="offcanvasNavbar"
               aria-labelledby="offcanvasNavbarLabel"
               placement="end"
+              show={show} 
+              onHide={() => setShow(false)}
             >
               <Offcanvas.Header closeButton>
                 <img
@@ -56,18 +63,18 @@ const NavBar = () => {
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 {user ? (
                     <>
-                      <Nav.Link as={Link} to="/">Home</Nav.Link>
-                      <Nav.Link as={Link} to="/logs">Logs</Nav.Link>
-                      <Nav.Link as={Link} to="/logs/new">New Log</Nav.Link>
-                      <Nav.Link as={Link} to="/" onClick={handleSignOut}>
+                      <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Home</Nav.Link>
+                      <Nav.Link as={Link} to="/logs" onClick={handleLinkClick}>Logs</Nav.Link>
+                      <Nav.Link as={Link} to="/logs/new" onClick={handleLinkClick}>New Log</Nav.Link>
+                      <Nav.Link as={Link} to="/" onClick={() => { handleLinkClick(); handleSignOut(); }}>
                         Sign Out
                       </Nav.Link>
                     </>
                 ) : (
                   <>
-                      <Nav.Link as={Link} to="/">Home</Nav.Link>
-                      <Nav.Link as={Link} to="/sign-in">Sign In</Nav.Link>
-                      <Nav.Link as={Link} to="/sign-up">Sign Up</Nav.Link>
+                      <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Home</Nav.Link>
+                      <Nav.Link as={Link} to="/sign-in" onClick={handleLinkClick}>Sign In</Nav.Link>
+                      <Nav.Link as={Link} to="/sign-up" onClick={handleLinkClick}>Sign Up</Nav.Link>
                   </>
                 )}
                 </Nav>
