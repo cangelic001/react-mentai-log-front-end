@@ -26,7 +26,7 @@ const NavBar = () => {
 
   return (
     <>
-      <Navbar sticky="top" expand={false} className="mb-5 custom-navbar" >
+      <Navbar sticky="top" expand={false} className=" mb-5 custom-navbar" >
           <Container fluid>
             <Navbar.Brand href="/">
               <img

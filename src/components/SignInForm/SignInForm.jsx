@@ -61,7 +61,7 @@ const SignInForm = () => {
                 </Form.Group>
 
                 <div className="d-flex justify-content-between">
-                    <Button variant="warning" type="submit">
+                    <Button className="text-white" variant="warning" type="submit">
                         Sign In
                     </Button>
                     <Button variant="outline-warning" onClick={() => navigate('/')}>
