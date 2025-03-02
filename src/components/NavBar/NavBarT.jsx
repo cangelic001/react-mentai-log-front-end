@@ -9,7 +9,7 @@ import userpng from '../../assets/user.png';
 const NavBarT = () => {
   const { user, setUser } = useContext(UserContext);
 
-  setUser(undefined);
+//   setUser(undefined);
   const handleSignOut = () => {
     localStorage.removeItem('token');
     setUser(null);
@@ -40,9 +40,9 @@ const NavBarT = () => {
                 </div>
                     <ul className="py-2" aria-labelledby="user-menu-button">
                         <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='/'>Home</Link></li>
-                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='#'>Create a New Log</Link></li>
-                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='#'>My Emotions Dashboard</Link></li>
-                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='#'>My Logs</Link></li>
+                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='/logs/new'>Create a New Log</Link></li>
+                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='/dashboard'>My Emotions Dashboard</Link></li>
+                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='/logs'>My Logs</Link></li>
                         <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
                     </ul>
                 </div>
