@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import * as logService from "../../services/logService";
 import { UserContext } from "../../contexts/UserContext";
+import "./LogDetails.css"
 
 const LogDetails = (props) => {
   const { logId } = useParams();
@@ -16,7 +17,6 @@ const LogDetails = (props) => {
     fetchLog();
   }, [logId]);
 
-
   if (!log) return <main>Loading...</main>;
 
   return (
@@ -30,7 +30,7 @@ const LogDetails = (props) => {
           </p>
           {log.author._id === user._id && (
             <>
-              <Link to={`/logs/${logId}/edit`}>Edit</Link>
+              <Link className="edit-btn" to={`/logs/${logId}/edit`}>Edit</Link>
 
               <button onClick={() => props.handleDeleteLog(logId)}>
                 Delete

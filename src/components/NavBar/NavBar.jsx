@@ -72,8 +72,8 @@ const NavBar = () => {
                 {user ? (
                     <>
                       <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Home</Nav.Link>
-                      <Nav.Link as={Link} to="/logs" onClick={handleLinkClick}>Logs</Nav.Link>
-                      <Nav.Link as={Link} to="/logs/new" onClick={handleLinkClick}>New Log</Nav.Link>
+                      <Nav.Link as={Link} to="/logs" onClick={handleLinkClick}>View Logs</Nav.Link>
+                      <Nav.Link as={Link} to="/logs/new" onClick={handleLinkClick}>Create a New Log</Nav.Link>
                       <Nav.Link as={Link} to="/" onClick={() => { handleLinkClick(); handleSignOut(); }}>
                         Sign Out
                       </Nav.Link>

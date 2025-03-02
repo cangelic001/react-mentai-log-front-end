@@ -3,6 +3,8 @@ import './LogList.css'
 ;
 const LogList = (props) => {
     return (
+      <>
+        <h1 className="mentai-text">Logs</h1>
         <main className="log-list-container">
           {props.logs.map((log) => (
             <Link key={log._id} to={`/logs/${log._id}`} className="log-list-wrapper mentai-text">
@@ -19,6 +21,7 @@ const LogList = (props) => {
             </Link>
           ))}
         </main>
+      </>
       );
 };
 export default LogList;

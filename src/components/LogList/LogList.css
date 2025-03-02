@@ -10,7 +10,7 @@
 }
 
 .log-list-wrapper {
-    background-color: #fae3a5;
+    background-color: #ffedbb;
     padding: 30px; 
     border-radius: 25px;
     box-shadow: 4px 4px 0 rgba(255, 165, 10, 1);
@@ -24,7 +24,12 @@
     justify-content: space-between;
     height: 400px;
     overflow-y: auto; 
-    border: 20px solid #fae3a5; 
+    border: 20px solid #ffedbb; 
+    transition: background-color 0.3s ease; 
+}
+
+.log-list-wrapper:hover {
+    background-color: rgba(255, 226, 146, 0.4); 
 }
 
 h2 {

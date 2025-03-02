@@ -1,3 +1,14 @@
+@keyframes slide-up {
+    from {
+        transform: translateY(20px); 
+        opacity: 0; 
+    }
+    to {
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
 .log-form-container {
     display: flex;
     justify-content: center;
@@ -7,7 +18,7 @@
 }
 
 .log-form {
-    background-color: #fae3a5;
+    background-color: #feeec0;
     padding: 30px;
     border-radius: 25px; 
     box-shadow: 4px 4px 0 rgba(255, 165, 10, 1);
@@ -15,6 +26,7 @@
     min-height: 500px; 
     max-height: 800px; 
     box-sizing: border-box;
+    animation: slide-up 0.5s ease-out;
 }
 
 h1 {
@@ -63,7 +75,7 @@ textarea {
     border-radius: 8px; 
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
 }
 
 .btn-submit:hover {
