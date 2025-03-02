@@ -31,6 +31,14 @@ ChartJS.register(
   Legend
 );
 
+// Custom color scheme
+const colors = {
+  lightYellow: "rgb(250, 227, 165)", // #fae3a5
+  orange: "rgb(255, 165, 10)",      // #ffa50a
+  pink: "rgb(255, 148, 166)",       // #ff94a6
+  darkGreen: "rgb(20, 36, 35)"      // #142423
+};
+
 const Dashboard = () => {
   const { user } = useContext(UserContext);
 
@@ -42,8 +50,9 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true); 
   const [noLogs, setNoLogs] = useState(false); 
 
-
   useEffect(() => {
+ 
+    
     const fetchUserDashboardData = async () => {
       if (!user?._id) return;
 
@@ -65,27 +74,23 @@ const Dashboard = () => {
           setNoLogs(false); // Set noLogs to false if there is data
         }
 
-        setSentimentData(data.sentimentData);
-        setEmotionsData(data.emotionsData);
-        setKeywordData(data.keywordData);
-        setEntityData(data.entityData);
         setLoading(false);
-
       } catch (err) {
         console.log(err);
         setLoading(false);
       }
     };
     if (user) fetchUserDashboardData();
+    
   }, [user]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div style={{ fontFamily: "'Lexend', sans-serif", color: colors.darkGreen }}>Loading...</div>;
   }
 
   if (noLogs) {
     return (
-      <div>
+      <div style={{ fontFamily: "'Lexend', sans-serif", color: colors.darkGreen }}>
         <h1>Dashboard</h1>
         <p>No logs yet</p>
       </div>
@@ -95,6 +100,9 @@ const Dashboard = () => {
   const sortedSentimentData = sentimentData.sort((a, b) => new Date(a.date) - new Date(b.date));
   const sortedEmotionsData = emotionsData.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+  // Check if we have sentiment data to display
+  const hasSentimentData = sortedSentimentData.length > 0;
+
   const sentimentChartData = {
     labels: sortedSentimentData.map((item) => item.date),
     datasets: [
@@ -102,52 +110,64 @@ const Dashboard = () => {
         label: "Sentiment Score",
         data: sortedSentimentData.map((item) => item.score),
         fill: false,
-        borderColor: "rgb(75, 192, 192)",
+        borderColor: colors.orange,
+        backgroundColor: colors.orange,
         tension: 0.1,
       },
     ],
   };
 
+  // Check if we have emotions data to display
+  const hasEmotionsData = sortedEmotionsData.length > 0;
+
   const emotionsChartData = {
-    labels: sortedEmotionsData.map((item) => item.date), // Date as labels
+    labels: sortedEmotionsData.map((item) => item.date),
     datasets: [
       {
         label: "Joy",
         data: sortedEmotionsData.map((item) => item.emotions.joy),
         fill: false,
-        borderColor: "rgba(255, 99, 132, 1)",
+        borderColor: colors.orange,
+        backgroundColor: colors.orange,
         tension: 0.1,
       },
       {
         label: "Sadness",
         data: sortedEmotionsData.map((item) => item.emotions.sadness),
         fill: false,
-        borderColor: "rgba(54, 162, 235, 1)",
+        borderColor: colors.lightYellow,
+        backgroundColor: colors.lightYellow,
         tension: 0.1,
       },
       {
         label: "Fear",
         data: sortedEmotionsData.map((item) => item.emotions.fear),
         fill: false,
-        borderColor: "rgba(255, 159, 64, 1)",
+        borderColor: colors.pink,
+        backgroundColor: colors.pink,
         tension: 0.1,
       },
       {
         label: "Disgust",
         data: sortedEmotionsData.map((item) => item.emotions.disgust),
         fill: false,
-        borderColor: "rgba(75, 192, 192, 1)",
+        borderColor: colors.darkGreen,
+        backgroundColor: colors.darkGreen,
         tension: 0.1,
       },
       {
         label: "Anger",
         data: sortedEmotionsData.map((item) => item.emotions.anger),
         fill: false,
-        borderColor: "rgba(153, 102, 255, 1)",
+        borderColor: "rgba(153, 102, 255, 1)", // Keeping this color for contrast
+        backgroundColor: "rgba(153, 102, 255, 1)",
         tension: 0.1,
       },
     ],
   };
+
+  // Check if we have keyword data to display
+  const hasKeywordData = Object.keys(keywordData).length > 0;
 
   const keywordChartData = {
     labels: Object.keys(keywordData),
@@ -156,17 +176,17 @@ const Dashboard = () => {
         label: "Keyword Frequency",
         data: Object.values(keywordData),
         backgroundColor: [
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 159, 64, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(153, 102, 255, 0.6)",
+          colors.lightYellow,
+          colors.orange,
+          colors.pink,
+          colors.darkGreen,
+          "rgba(153, 102, 255, 0.6)", // Keeping one different color for variety
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 159, 64, 1)",
-          "rgba(75, 192, 192, 1)",
+          colors.lightYellow,
+          colors.orange,
+          colors.pink,
+          colors.darkGreen,
           "rgba(153, 102, 255, 1)",
         ],
         borderWidth: 1,
@@ -174,7 +194,9 @@ const Dashboard = () => {
     ],
   };
 
-  // Donut chart for Entity Frequency
+  // Check if we have entity data to display
+  const hasEntityData = Object.keys(entityData).length > 0;
+
   const entityChartData = {
     labels: Object.keys(entityData),
     datasets: [
@@ -182,17 +204,17 @@ const Dashboard = () => {
         label: "Entity Frequency",
         data: Object.values(entityData),
         backgroundColor: [
-          "rgba(255, 99, 132, 0.6)",
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 159, 64, 0.6)",
-          "rgba(75, 192, 192, 0.6)",
-          "rgba(153, 102, 255, 0.6)",
+          colors.lightYellow,
+          colors.orange,
+          colors.pink,
+          colors.darkGreen,
+          "rgba(153, 102, 255, 0.6)", // Keeping one different color for variety
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 159, 64, 1)",
-          "rgba(75, 192, 192, 1)",
+          colors.lightYellow,
+          colors.orange,
+          colors.pink,
+          colors.darkGreen,
           "rgba(153, 102, 255, 1)",
         ],
         borderWidth: 1,
@@ -200,29 +222,178 @@ const Dashboard = () => {
     ],
   };
 
+  // Chart options with custom font and colors - removed horizontal grid lines
+  const lineChartOptions = {
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            family: "'Lexend', sans-serif",
+            size: 12
+          },
+          color: colors.darkGreen
+        }
+      },
+      title: {
+        font: {
+          family: "'Lexend', sans-serif",
+          size: 16
+        },
+        color: colors.darkGreen
+      },
+      tooltip: {
+        titleFont: {
+          family: "'Lexend', sans-serif"
+        },
+        bodyFont: {
+          family: "'Lexend', sans-serif"
+        },
+        backgroundColor: colors.darkGreen,
+        titleColor: colors.lightYellow,
+        bodyColor: colors.lightYellow
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            family: "'Lexend', sans-serif"
+          },
+          color: colors.darkGreen
+        },
+        grid: {
+          display: false // Remove horizontal grid lines
+        }
+      },
+      y: {
+        ticks: {
+          font: {
+            family: "'Lexend', sans-serif"
+          },
+          color: colors.darkGreen
+        },
+        grid: {
+          display: false // Remove horizontal grid lines
+        }
+      }
+    }
+  };
+
+  // Doughnut chart options with smaller size
+  const doughnutChartOptions = {
+    plugins: {
+      legend: {
+        position: 'right', // Move legend to the right to save space
+        labels: {
+          font: {
+            family: "'Lexend', sans-serif",
+            size: 12
+          },
+          color: colors.darkGreen
+        }
+      },
+      tooltip: {
+        titleFont: {
+          family: "'Lexend', sans-serif"
+        },
+        bodyFont: {
+          family: "'Lexend', sans-serif"
+        },
+        backgroundColor: colors.darkGreen,
+        titleColor: colors.lightYellow,
+        bodyColor: colors.lightYellow
+      }
+    },
+    cutout: '60%', // Make the donut hole larger
+    maintainAspectRatio: true,
+    responsive: true
+  };
+
+  const dashboardStyle = {
+    fontFamily: "'Lexend', sans-serif",
+    color: colors.darkGreen,
+    padding: "20px",
+    backgroundColor: "#f5f5f5"
+  };
+
+  const gridContainerStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "20px",
+    marginTop: "20px"
+  };
+
+  const chartContainerStyle = {
+    width: "calc(50% - 30px)",
+    maxWidth: "600px",
+    padding: "15px",
+    backgroundColor: "white",
+    borderRadius: "8px",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+  };
+
+  const donutChartContainerStyle = {
+    ...chartContainerStyle,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  };
+
+  const donutChartWrapperStyle = {
+    width: "70%", // Make the donut chart container smaller
+    maxWidth: "300px", // Limit maximum width
+    margin: "0 auto"
+  };
+
+  // For mobile responsiveness
+  const mediaQuery = window.matchMedia("(max-width: 768px)");
+  if (mediaQuery.matches) {
+    chartContainerStyle.width = "100%";
+    donutChartWrapperStyle.width = "80%";
+  }
+
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <div style={dashboardStyle}>
+      <h1 style={{ textAlign: "center", color: colors.darkGreen }}>Dashboard</h1>
 
-      <div style={{ width: "45%", margin: "20px auto" }}>
-        <h3>Sentiment Trend</h3>
-        <Line data={sentimentChartData} />
+      <div style={gridContainerStyle}>
+        {hasSentimentData ? (
+          <div style={chartContainerStyle}>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Sentiment Trend</h3>
+            <Line data={sentimentChartData} options={lineChartOptions} />
+          </div>
+        ) : null}
+
+        {hasEmotionsData ? (
+          <div style={chartContainerStyle}>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Emotions Trend</h3>
+            <Line data={emotionsChartData} options={lineChartOptions} />
+          </div>
+        ) : null}
+
+        {hasKeywordData ? (
+          <div style={donutChartContainerStyle}>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Keyword Frequency</h3>
+            <div style={donutChartWrapperStyle}>
+              <Doughnut data={keywordChartData} options={doughnutChartOptions} />
+            </div>
+          </div>
+        ) : null}
+
+        {hasEntityData ? (
+          <div style={donutChartContainerStyle}>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Entity Frequency</h3>
+            <div style={donutChartWrapperStyle}>
+              <Doughnut data={entityChartData} options={doughnutChartOptions} />
+            </div>
+          </div>
+        ) : null}
       </div>
 
-      <div style={{ width: "45%", margin: "20px auto" }}>
-        <h3>Emotions Trend</h3>
-        <Line data={emotionsChartData} />
-      </div>
-
-      <div style={{ width: "45%", margin: "20px auto" }}>
-        <h3>Keyword Frequency</h3>
-        <Doughnut data={keywordChartData} />
-      </div>
-
-      <div style={{ width: "45%", margin: "20px auto" }}>
-        <h3>Entity Frequency</h3>
-        <Doughnut data={entityChartData} />
-      </div>
+      {!hasSentimentData && !hasEmotionsData && !hasKeywordData && !hasEntityData && (
+        <p style={{ textAlign: "center" }}>No data available to display in charts</p>
+      )}
     </div>
   );
 };
