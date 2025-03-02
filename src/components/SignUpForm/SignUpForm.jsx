@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
-
 import { signUp } from '../../services/authService';
-
 import { UserContext } from '../../contexts/UserContext';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -38,49 +37,70 @@ const SignUpForm = () => {
   };
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <p>{message}</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='username'>Username:</label>
-          <input
-            type='text'
-            id='name'
-            value={username}
-            name='username'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            id='password'
-            value={password}
-            name='password'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='confirm'>Confirm Password:</label>
-          <input
-            type='password'
-            id='confirm'
-            value={passwordConf}
-            name='passwordConf'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
-        </div>
-      </form>
-    </main>
+    <>
+      <Container className="mt-5">
+        <Row className="justify-content-center">
+            <Col md={6}>
+                <h1 className="text-center mb-4 mentai-text">Sign Up</h1>
+                {message && <Alert variant="info">{message}</Alert>}
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="username" className="mb-3 nori-text">
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter your username"
+                            value={username}
+                            name="username"
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="password" className="mb-3 nori-text">
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Create a password"
+                            value={password}
+                            name="password"
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+
+                    <Form.Group controlId="confirm" className="mb-4 nori-text">
+                        <Form.Label>Confirm Password:</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Confirm your password"
+                            value={passwordConf}
+                            name="passwordConf"
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+
+                    <div className="d-flex justify-content-between">
+                        <Button 
+                            variant="warning" 
+                            type="submit" 
+                            disabled={isFormInvalid()}
+                            className="text-white"
+                        >
+                            Sign Up
+                        </Button>
+                        <Button 
+                            variant="outline-warning" 
+                            onClick={() => navigate('/')}
+                        >
+                            Cancel
+                        </Button>
+                    </div>
+                </Form>
+            </Col>
+        </Row>
+    </Container>
+    </>
   );
 };
 
