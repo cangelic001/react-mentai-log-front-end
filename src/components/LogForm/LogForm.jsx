@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from "react";
-
 import { useParams } from "react-router";
 import * as logService from "../../services/logService";
+import "./LogForm.css";
 
 const LogForm = (props) => {
   const { logId } = useParams();
@@ -35,28 +35,37 @@ const LogForm = (props) => {
   };
 
   return (
-    <main>
-      <h1>{logId ? "Edit Log" : "New Log"}</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title-input">Title</label>
-        <input
-          type="text"
-          name="title"
-          id="title-input"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <label htmlFor="text-input">Text</label>
-        <textarea
-          required
-          type="text"
-          name="text"
-          id="text-input"
-          value={formData.text}
-          onChange={handleChange}
-        />
-        <button type="submit">SUBMIT</button>
-      </form>
+    <main className="log-form-container">
+        <div className="log-form">
+            <h1 className="mentai-text">{logId ? "Edit Log" : "New Log"}</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="title-input">Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        id="title-input"
+                        value={formData.title}
+                        onChange={handleChange}
+                        className="form-control"
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="text-input">Text</label>
+                    <textarea
+                        required
+                        name="text"
+                        id="text-input"
+                        value={formData.text}
+                        onChange={handleChange}
+                        className="form-control"
+                    />
+                </div>
+
+                <button type="submit" className="btn-submit">SUBMIT</button>
+            </form>
+        </div>
     </main>
   );
 };

@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
-
 import { signIn } from '../../services/authService';
-
 import { UserContext } from '../../contexts/UserContext';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -31,40 +30,48 @@ const SignInForm = () => {
   };
 
   return (
-    <main>
-      <h1>Sign In</h1>
-      <p>{message}</p>
-      <form autoComplete='off' onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='email'>Username:</label>
-          <input
-            type='text'
-            autoComplete='off'
-            id='username'
-            value={formData.username}
-            name='username'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            autoComplete='off'
-            id='password'
-            value={formData.password}
-            name='password'
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <button>Sign In</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
-        </div>
-      </form>
-    </main>
+    <Container className="mt-5">
+    <Row className="justify-content-center">
+        <Col md={6}>
+            <h1 className="text-center mb-4 mentai-text">Sign In</h1>
+            {message && <Alert variant="info">{message}</Alert>}
+            <Form autoComplete="off" onSubmit={handleSubmit}>
+                <Form.Group controlId="username" className="mb-3 nori-text">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter your username"
+                        value={formData.username}
+                        name="username"
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
+
+                <Form.Group controlId="password" className="mb-4 nori-text">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Enter your password"
+                        value={formData.password}
+                        name="password"
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
+
+                <div className="d-flex justify-content-between">
+                    <Button className="text-white" variant="warning" type="submit">
+                        Sign In
+                    </Button>
+                    <Button variant="outline-warning" onClick={() => navigate('/')}>
+                        Cancel
+                    </Button>
+                </div>
+            </Form>
+        </Col>
+    </Row>
+</Container>
   );
 };
 
