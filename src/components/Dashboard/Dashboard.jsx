@@ -4,6 +4,8 @@ import { UserContext } from "../../contexts/UserContext";
 
 import * as userService from "../../services/userService";
 
+import LoadingSpinner from "./Spinner";
+
 import { Line, Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -85,7 +87,7 @@ const Dashboard = () => {
   }, [user]);
 
   if (loading) {
-    return <div style={{ fontFamily: "'Lexend', sans-serif", color: colors.darkGreen }}>Loading...</div>;
+    return <LoadingSpinner colors={colors} />;
   }
 
   if (noLogs) {
@@ -287,7 +289,7 @@ const Dashboard = () => {
         labels: {
           font: {
             family: "'Lexend', sans-serif",
-            size: 12
+            size: 10
           },
           color: colors.darkGreen
         }
@@ -312,8 +314,7 @@ const Dashboard = () => {
   const dashboardStyle = {
     fontFamily: "'Lexend', sans-serif",
     color: colors.darkGreen,
-    padding: "20px",
-    backgroundColor: "#f5f5f5"
+    padding: "20px"
   };
 
   const gridContainerStyle = {
@@ -341,17 +342,10 @@ const Dashboard = () => {
   };
 
   const donutChartWrapperStyle = {
-    width: "70%", // Make the donut chart container smaller
-    maxWidth: "300px", // Limit maximum width
+    width: "80%", // Make the donut chart container smaller
+    maxWidth: "400px", // Limit maximum width
     margin: "0 auto"
   };
-
-  // For mobile responsiveness
-  const mediaQuery = window.matchMedia("(max-width: 768px)");
-  if (mediaQuery.matches) {
-    chartContainerStyle.width = "100%";
-    donutChartWrapperStyle.width = "80%";
-  }
 
   return (
     <div style={dashboardStyle}>
@@ -360,21 +354,21 @@ const Dashboard = () => {
       <div style={gridContainerStyle}>
         {hasSentimentData ? (
           <div style={chartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Sentiment Trend</h3>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Sentiment</h3>
             <Line data={sentimentChartData} options={lineChartOptions} />
           </div>
         ) : null}
 
         {hasEmotionsData ? (
           <div style={chartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Emotions Trend</h3>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Emotions</h3>
             <Line data={emotionsChartData} options={lineChartOptions} />
           </div>
         ) : null}
 
         {hasKeywordData ? (
           <div style={donutChartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Keyword Frequency</h3>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Keywords</h3>
             <div style={donutChartWrapperStyle}>
               <Doughnut data={keywordChartData} options={doughnutChartOptions} />
             </div>
@@ -383,7 +377,7 @@ const Dashboard = () => {
 
         {hasEntityData ? (
           <div style={donutChartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Entity Frequency</h3>
+            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Entities</h3>
             <div style={donutChartWrapperStyle}>
               <Doughnut data={entityChartData} options={doughnutChartOptions} />
             </div>
