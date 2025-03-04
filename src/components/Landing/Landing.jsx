@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import CarouselLanding from "../CarouselLanding/CarouselLanding";
 import { Container } from "react-bootstrap";
-import CardLanding from "../CardLanding/CardLanding";
 import Button from 'react-bootstrap/Button';
 
 const Landing = () => {
