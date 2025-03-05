@@ -28,7 +28,9 @@ const LogDetails = (props) => {
             {`${log.author.username} posted on
                 ${new Date(log.createdAt).toLocaleDateString()}`}
           </p>
-          {log.author._id === user._id && (
+        </header>
+        <p>{log.text}</p>
+        {log.author._id === user._id && (
             <>
               <Link className="edit-btn" to={`/logs/${logId}/edit`}>Edit</Link>
 
@@ -37,8 +39,6 @@ const LogDetails = (props) => {
               </button>
             </>
           )}
-        </header>
-        <p>{log.text}</p>
       </section>
     </main>
   );

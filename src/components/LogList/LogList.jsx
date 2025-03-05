@@ -10,9 +10,9 @@ const LogList = (props) => {
             <Link key={log._id} to={`/logs/${log._id}`} className="log-list-wrapper mentai-text">
               <article>
                 <header>
-                  <h2>{log.title}</h2>
+                  <h2 className="title">{log.title}</h2>
                   <p className="salmon-text">
-                    {`${log.author.username} posted on
+                    {`Posted on
                     ${new Date(log.createdAt).toLocaleDateString()}`}
                   </p>
                 </header>

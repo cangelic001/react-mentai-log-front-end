@@ -1,27 +1,24 @@
 import { Link } from "react-router-dom"
 import CarouselLanding from "../CarouselLanding/CarouselLanding";
 import { Container } from "react-bootstrap";
-import CardLanding from "../CardLanding/CardLanding";
 import Button from 'react-bootstrap/Button';
 
 const Landing = () => {
   return (
     <div>
       <Container>
-        <CarouselLanding />
-
-        <div className="mb-3 mt-5 text-center" style={{display: 'flex', flexDirection: 'column', gap: '5px', justifyContent: 'center', alignItems: 'center'}}>
-          <h1 className="nori-text">Welcome to </h1>
-          <h1 className="fw-bold mb-5"> 
-            <span className="mentai-text">Mentai</span> 
-            <span className="nori-text">-</span>  
-            <span className="salmon-text">Log</span>
+    
+        <div className="mb-1 mt-5 text-center" style={{display: 'flex', flexDirection: 'column', gap: '5px', justifyContent: 'center', alignItems: 'center'}}>
+          <h1 className="fw-bold mb-1"> 
+            <span className="mentai-text display-3"><strong>Mentai</strong></span> 
+            <span className="nori-text display-3"><strong>-</strong></span>  
+            <span className="salmon-text display-3"><strong>Log</strong></span>
           </h1>
           
-          <h6 className="mt-3 w-50" style={{ color: "#fcdb7f" }}>Your thoughts deserve a home — start journaling today to capture your dreams, untangle your emotions, and discover the power of your own voice.</h6>
+          <h6 className="mt-1 w-50" style={{ color: "#fcdb7f" }}>Your thoughts deserve a home — start journalling today to capture your dreams, untangle your emotions, and discover the power of your own voice.</h6>
           
-          <div className="mt-5 mb-5 " style={{ display: 'flex', flexDirection: 'column', gap: '5px', justifyContent: 'center', alignItems: 'center'}}>
-            <Button variant="warning" className="mt-3 w-90 text-white">
+          <div className="mt-1" style={{ display: 'flex', flexDirection: 'column', gap: '5px', justifyContent: 'center', alignItems: 'center'}}>
+            <Button variant="warning" className="mt-1 w-90 text-white">
                 <Link to="/sign-up" style={{ textDecoration: 'none', color: 'inherit' }}>
                     New here? Start Logging Now
                 </Link>
@@ -31,9 +28,10 @@ const Landing = () => {
                 Already have an account? Continue logging
             </Link>
           </div>
-        </div>
 
-        <CardLanding />
+          <CarouselLanding />
+
+        </div>
 
       </ Container>
     </div>
