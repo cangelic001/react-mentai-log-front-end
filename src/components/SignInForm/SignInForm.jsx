@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { signIn } from '../../services/authService';
 import { UserContext } from '../../contexts/UserContext';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+import LoadingSpinner from './Spinner';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ const SignInForm = () => {
     username: '',
     password: '',
   });
+  const [loading, setLoading] = useState(false); 
+  const [isSigningIn, setIsSigningIn] = useState(false);
 
   const handleChange = (evt) => {
     setMessage('');
@@ -20,12 +23,17 @@ const SignInForm = () => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+    setIsSigningIn(true);
+    setLoading(true);
     try {
       const signedInUser = await signIn(formData);
       setUser(signedInUser);
       navigate('/');
+      setLoading(false);
     } catch (err) {
       setMessage(err.message);
+      setLoading(false);
+      setIsSigningIn(false);
     }
   };
 
@@ -60,11 +68,17 @@ const SignInForm = () => {
                     />
                 </Form.Group>
 
+                {isSigningIn && (
+                  <div className="text-center">
+                    <LoadingSpinner />
+                  </div>
+                )}
+
                 <div className="d-flex justify-content-between">
-                    <Button className="text-white" variant="warning" type="submit">
-                        Sign In
+                    <Button className="text-white" variant="warning" type="submit" disabled={loading}>
+                      {isSigningIn ? 'Signing In...' : 'Sign In'}
                     </Button>
-                    <Button variant="outline-warning" onClick={() => navigate('/')}>
+                    <Button variant="outline-warning" onClick={() => navigate('/')} disabled={loading}>
                         Cancel
                     </Button>
                 </div>
