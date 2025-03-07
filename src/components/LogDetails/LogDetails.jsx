@@ -28,7 +28,7 @@ const LogDetails = (props) => {
     <main>
       <section>
         <header>
-          <h1>{log.title}</h1>
+          <h3>{log.title}</h3>
           <p>
             {`posted on
                 ${new Date(log.createdAt).toLocaleDateString()}`}
