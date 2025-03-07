@@ -59,6 +59,17 @@ button:hover {
     background-color: #ff7878;
 }
 
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #ffa50a;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
 /* Animation */
 
 @keyframes fadeInUp {

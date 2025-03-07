@@ -33,7 +33,6 @@ const App = () => {
   useEffect(() => {
     const fetchUserLogs = async () => {
       const LogsData = await logService.index();
-
       setLogs(LogsData);
     };
     if (user) fetchUserLogs();
@@ -42,7 +41,7 @@ const App = () => {
   const handleAddLog = async (logFormData) => {
     const newLog = await logService.create(logFormData);
     setLogs([newLog, ...logs]);
-    navigate("/logs");
+    setTimeout(() => navigate("/logs"), 1000);
   };
 
   const handleDeleteLog = async (logId) => {

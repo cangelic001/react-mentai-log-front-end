@@ -9,7 +9,7 @@ Initially, we wanted to something with visionAI either video or image but we fea
 
 This is a journal app, not quite a mental health app. We thought doing a full mental health app would be too sensitive and risk with mistakes and errors would be too great hence, we decided to go with a simple journal app with sentiment analysis for self monitoring. The name reflects the playful nature of the app with a play on mental health and a popular food item: mentai and logging. 
 
-Essentially, the user logs a written journal everyday. The app analyses the journal for emotions such as joy, sadness etc, sentiment, keywords and entities. These are stored in the databased and is presented as a visualisation in the user's dashboard back to the user. This way, the user can monitor their mood and things that are bothering them.
+Essentially, the user logs a written journal everyday. The app analyses the journal for emotions such as joy, sadness etc, sentiment, keywords and entities. These are stored in the database and is presented as a visualisation in the user's dashboard back to the user. This way, the user can monitor their mood and things that are bothering them.
 
 ## Project Planning Deliverable
 
