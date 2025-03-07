@@ -43,7 +43,7 @@ const NavBar = () => {
               </span>
             </Navbar.Brand>
 
-            <Nav className="justify-content-end flex-grow-1 pe-3 flex-row">
+            <Nav className="justify-content-end flex-grow-1 pe-3 flex-row fw-bold">
                 {user ? (
                     <>
                       <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Home</Nav.Link>
@@ -89,7 +89,7 @@ const NavBar = () => {
               </Offcanvas.Header>
 
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav className="justify-content-end flex-grow-1 pe-3 fw-bold">
                 {user ? (
                     <>
                       <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Home</Nav.Link>

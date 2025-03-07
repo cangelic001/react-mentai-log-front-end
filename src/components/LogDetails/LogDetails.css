@@ -7,7 +7,7 @@ main {
 }
 
 section {
-    background-color: #fffaf0;
+    background-color: #ffeced;
     padding: 40px;
     border-radius: 25px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -28,7 +28,7 @@ h1 {
 }
 
 p {
-    font-size: 1em;
+    font-size: 16px;
     color: #333;
     line-height: 1.6;
 }
@@ -42,6 +42,10 @@ p {
     background-color: #ff94a6;
     color: #fff;
     transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #ffa8b7;
 }
 
 button {
@@ -68,6 +72,10 @@ button:hover {
     background-color: #ffa50a;
     color: #fff;
     transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #ffbf50;
 }
 
 /* Animation */

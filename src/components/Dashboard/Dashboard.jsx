@@ -350,7 +350,7 @@ const Dashboard = () => {
   return (
     <div style={dashboardStyle}>
       <h1 style={{ textAlign: "center", color: colors.orange }}>Hello, {user.username}!</h1>
-      <h1 style={{ textAlign: "center", color: colors.pink }}>Your week in review...</h1>
+      <h4 style={{ textAlign: "center", color: colors.pink }}>Your week in review...</h4>
 
       <div style={gridContainerStyle}>
         {hasSentimentData ? (
