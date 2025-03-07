@@ -322,7 +322,7 @@ const Dashboard = () => {
     flexWrap: "wrap",
     justifyContent: "center",
     gap: "20px",
-    marginTop: "20px"
+    marginTop: "30px"
   };
 
   const chartContainerStyle = {
@@ -342,33 +342,34 @@ const Dashboard = () => {
   };
 
   const donutChartWrapperStyle = {
-    width: "80%", // Make the donut chart container smaller
-    maxWidth: "400px", // Limit maximum width
+    width: "70%", // Make the donut chart container smaller
+    maxWidth: "350px", // Limit maximum width
     margin: "0 auto"
   };
 
   return (
     <div style={dashboardStyle}>
-      <h1 style={{ textAlign: "center", color: colors.darkGreen }}>Dashboard</h1>
+      <h1 style={{ textAlign: "center", color: colors.orange }}>Hello, {user.username}!</h1>
+      <h1 style={{ textAlign: "center", color: colors.pink }}>Your week in review...</h1>
 
       <div style={gridContainerStyle}>
         {hasSentimentData ? (
           <div style={chartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Sentiment</h3>
+            <h3 style={{ textAlign: "center", color: colors.lightYellow }}>Sentiment</h3>
             <Line data={sentimentChartData} options={lineChartOptions} />
           </div>
         ) : null}
 
         {hasEmotionsData ? (
           <div style={chartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Emotions</h3>
+            <h3 style={{ textAlign: "center", color: colors.lightYellow }}>Emotions</h3>
             <Line data={emotionsChartData} options={lineChartOptions} />
           </div>
         ) : null}
 
         {hasKeywordData ? (
           <div style={donutChartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Keywords</h3>
+            <h3 style={{ textAlign: "center", color: colors.lightYellow }}>Keywords</h3>
             <div style={donutChartWrapperStyle}>
               <Doughnut data={keywordChartData} options={doughnutChartOptions} />
             </div>
@@ -377,7 +378,7 @@ const Dashboard = () => {
 
         {hasEntityData ? (
           <div style={donutChartContainerStyle}>
-            <h3 style={{ textAlign: "center", color: colors.darkGreen }}>Entities</h3>
+            <h3 style={{ textAlign: "center", color: colors.lightYellow }}>Entities</h3>
             <div style={donutChartWrapperStyle}>
               <Doughnut data={entityChartData} options={doughnutChartOptions} />
             </div>
@@ -386,7 +387,7 @@ const Dashboard = () => {
       </div>
 
       {!hasSentimentData && !hasEmotionsData && !hasKeywordData && !hasEntityData && (
-        <p style={{ textAlign: "center" }}>No data available to display in charts</p>
+        <p style={{ textAlign: "center", color: colors.pink }}>No data available to display in charts</p>
       )}
     </div>
   );
