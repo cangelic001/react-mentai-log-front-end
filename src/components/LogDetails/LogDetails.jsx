@@ -11,8 +11,13 @@ const LogDetails = (props) => {
 
   useEffect(() => {
     const fetchLog = async () => {
-      const logData = await logService.show(logId);
-      setLog(logData);
+      try {
+        const logData = await logService.show(logId);
+        setLog(logData);
+      } catch (error) {
+        console.error("Failed to fetch log:", error);
+        setLog(null); 
+      }
     };
     fetchLog();
   }, [logId]);
@@ -25,20 +30,20 @@ const LogDetails = (props) => {
         <header>
           <h1>{log.title}</h1>
           <p>
-            {`${log.author.username} posted on
+            {`posted on
                 ${new Date(log.createdAt).toLocaleDateString()}`}
           </p>
         </header>
         <p>{log.text}</p>
-        {log.author._id === user._id && (
-            <>
-              <Link className="edit-btn" to={`/logs/${logId}/edit`}>Edit</Link>
-
-              <button onClick={() => props.handleDeleteLog(logId)}>
-                Delete
-              </button>
-            </>
-          )}
+        {log.author && user && log.author._id === user._id && (
+          <>
+            <Link className="edit-btn" to={`/logs/${logId}/edit`}>Edit</Link>
+            <button onClick={() => props.handleDeleteLog(logId)}>
+              Delete
+            </button>
+            <Link className="back-btn" to={`/logs`}>Back</Link>
+          </>
+        )}
       </section>
     </main>
   );

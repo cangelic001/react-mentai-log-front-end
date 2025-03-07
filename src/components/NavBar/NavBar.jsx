@@ -42,7 +42,28 @@ const NavBar = () => {
                 <span className="salmon-text">Log</span>
               </span>
             </Navbar.Brand>
+
+            <Nav className="justify-content-end flex-grow-1 pe-3 flex-row">
+                {user ? (
+                    <>
+                      <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Home</Nav.Link>
+                      <Nav.Link as={Link} to="/logs" onClick={handleLinkClick}>View Logs</Nav.Link>
+                      <Nav.Link as={Link} to="/logs/new" onClick={handleLinkClick}>Create a New Log</Nav.Link>
+                      <Nav.Link as={Link} to="/" onClick={() => { handleLinkClick(); handleSignOut(); }}>
+                        Sign Out
+                      </Nav.Link>
+                    </>
+                ) : (
+                  <>
+                      <Nav.Link as={Link} to="/" onClick={handleLinkClick}>Home</Nav.Link>
+                      <Nav.Link as={Link} to="/sign-in" onClick={handleLinkClick}>Sign In</Nav.Link>
+                      <Nav.Link as={Link} to="/sign-up" onClick={handleLinkClick}>Sign Up</Nav.Link>
+                  </>
+                )}
+                </Nav>
+            
             <Navbar.Toggle aria-controls="offcanvasNavbar" onClick={() => setShow(true)} />
+            
             <Navbar.Offcanvas
               id="offcanvasNavbar"
               aria-labelledby="offcanvasNavbarLabel"
