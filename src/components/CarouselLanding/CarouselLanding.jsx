@@ -27,7 +27,7 @@ function CarouselLanding() {
                 {textData.map((info, index) => (
                     <Carousel.Item key={index}>
                         <div className="carousel-box">
-                            <h6 style={{ color: "#ff94a6" }} className="fw-bold">{info.text}</h6>
+                            <h4 style={{ color: "#ff94a6" }} className="fw-bold">{info.text}</h4>
                             <img src={info.image} alt={info.text} className="carousel-image" />
                         </div>
                     </Carousel.Item>

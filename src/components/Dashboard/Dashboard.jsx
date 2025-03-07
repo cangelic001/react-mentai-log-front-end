@@ -33,7 +33,6 @@ ChartJS.register(
   Legend
 );
 
-// Custom color scheme
 const colors = {
   lightYellow: "rgb(250, 227, 165)", // #fae3a5
   orange: "rgb(255, 165, 10)",      // #ffa50a
@@ -67,13 +66,13 @@ const Dashboard = () => {
           !Object.keys(data.keywordData).length &&
           !Object.keys(data.entityData).length
         ) {
-          setNoLogs(true); // Set noLogs to true if there is no data
+          setNoLogs(true); 
         } else {
           setSentimentData(data.sentimentData);
           setEmotionsData(data.emotionsData);
           setKeywordData(data.keywordData);
           setEntityData(data.entityData);
-          setNoLogs(false); // Set noLogs to false if there is data
+          setNoLogs(false); 
         }
 
         setLoading(false);
@@ -102,7 +101,6 @@ const Dashboard = () => {
   const sortedSentimentData = sentimentData.sort((a, b) => new Date(a.date) - new Date(b.date));
   const sortedEmotionsData = emotionsData.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // Check if we have sentiment data to display
   const hasSentimentData = sortedSentimentData.length > 0;
 
   const sentimentChartData = {
@@ -119,7 +117,7 @@ const Dashboard = () => {
     ],
   };
 
-  // Check if we have emotions data to display
+
   const hasEmotionsData = sortedEmotionsData.length > 0;
 
   const emotionsChartData = {
@@ -168,7 +166,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Check if we have keyword data to display
   const hasKeywordData = Object.keys(keywordData).length > 0;
 
   const keywordChartData = {
@@ -196,7 +193,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Check if we have entity data to display
   const hasEntityData = Object.keys(entityData).length > 0;
 
   const entityChartData = {
@@ -210,7 +206,7 @@ const Dashboard = () => {
           colors.orange,
           colors.pink,
           colors.darkGreen,
-          "rgba(153, 102, 255, 0.6)", // Keeping one different color for variety
+          "rgba(153, 102, 255, 0.6)", 
         ],
         borderColor: [
           colors.lightYellow,
@@ -224,7 +220,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Chart options with custom font and colors - removed horizontal grid lines
   const lineChartOptions = {
     plugins: {
       legend: {
@@ -264,7 +259,7 @@ const Dashboard = () => {
           color: colors.darkGreen
         },
         grid: {
-          display: false // Remove horizontal grid lines
+          display: false 
         }
       },
       y: {
@@ -275,7 +270,7 @@ const Dashboard = () => {
           color: colors.darkGreen
         },
         grid: {
-          display: false // Remove horizontal grid lines
+          display: false 
         }
       }
     }
@@ -285,7 +280,7 @@ const Dashboard = () => {
   const doughnutChartOptions = {
     plugins: {
       legend: {
-        position: 'right', // Move legend to the right to save space
+        position: 'right', 
         labels: {
           font: {
             family: "'Lexend', sans-serif",
@@ -342,8 +337,8 @@ const Dashboard = () => {
   };
 
   const donutChartWrapperStyle = {
-    width: "70%", // Make the donut chart container smaller
-    maxWidth: "350px", // Limit maximum width
+    width: "70%", 
+    maxWidth: "350px", 
     margin: "0 auto"
   };
 

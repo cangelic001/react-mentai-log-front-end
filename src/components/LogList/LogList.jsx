@@ -4,7 +4,9 @@ import './LogList.css'
 const LogList = (props) => {
     return (
       <>
-        <h1 className="mentai-text">Logs<br/><h4 className="salmon-text">Your days in hindsight...</h4></h1>
+      
+        <h1 className="mentai-text">Logs</h1>
+        <h4 className="salmon-text">Your days in hindsight...</h4>
         <main className="log-list-container">
           {props.logs.map((log) => (
             <div className="log-list-wrapper mentai-text">
