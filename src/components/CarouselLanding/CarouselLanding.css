@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
 }
 
 .carousel {
@@ -26,6 +26,6 @@
   width: auto;
   height: 330px;
   margin: 0; 
-  padding: 0; 
+  padding: 10px; 
   object-fit: contain; 
 }

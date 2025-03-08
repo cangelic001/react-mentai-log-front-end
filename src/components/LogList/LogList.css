@@ -102,9 +102,11 @@ a {
 .no-logs-message {
     display: flex;
     justify-content: center; 
-    height: 100vh; 
-    font-size: 20px; 
     color: #ff94a6; 
     text-align: center; 
-    margin: 20px;
+    margin-top: 30px;
   }
+
+.salmon-text {
+    text-align: center;
+}
